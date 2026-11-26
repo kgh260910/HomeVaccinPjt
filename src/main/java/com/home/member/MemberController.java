@@ -26,8 +26,18 @@ public class MemberController extends HttpServlet {
 		String nextPage = null;
 		
 		switch (command) {
-		case "":
+		case "/signup_form.mem":
+			
+			nextPage = generateView("signup_form.mem");
 			break;
+		
+		case "/signin_form.mem":
+			
+			break;
+			
+		case "/signout_form.mem":
+			break;
+					
 			
 		}
 		
