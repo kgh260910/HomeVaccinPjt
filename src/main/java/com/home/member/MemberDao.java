@@ -64,4 +64,48 @@ public class MemberDao {
 	
 	}
 
+	public int insertNewMember(MemberDto memberDto) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int result = -1;
+		
+		try {
+			// 1. 드라이버 로드 in 메모리
+			Class.forName(DRIVER);
+			// 2. 다리 연결 : 커넥션
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			// 3. 작업지시서 작성 : SQL문
+			String sql = "insert into "
+					+ "tbl_admin(admin_id, admin_pw, admin_mail, admin_phone) "
+					+ "values(?, ?, ?, ?)";
+			// 4. 일꾼을 구합니다.
+			pstmt = conn.prepareStatement(sql);
+			// 5. 데이터 주입
+			pstmt.setString(1, memberDto.getAdmin_id());
+			pstmt.setString(2, memberDto.getAdmin_pw());
+			pstmt.setString(3, memberDto.getAdmin_mail());
+			pstmt.setString(4, memberDto.getAdmin_phone());
+			// 6. 작업 지시
+			result = pstmt.executeUpdate();
+	
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			// 8. 외부 자원 해제
+			try {
+		
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return result;
+	
+	}
+
 }
