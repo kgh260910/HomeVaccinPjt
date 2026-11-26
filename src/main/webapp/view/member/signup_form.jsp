@@ -13,8 +13,22 @@
 	<jsp:include page="../include/nav.jsp"/>
 	
 	<section>
-		<div>
-			<h1>HOME.</h1>
+		<div class="section_wrap">
+			<h1>SIGNUP FORM</h1>
+			
+			<form action="<%= request.getContextPath() %>/signup_confirm.mem" method="post" name="signup_form">
+				
+				<input type="text" name="admin_id" placeholder="Input new admin ID">
+				<br>
+				<input type="password" name="admin_pw" placeholder="Input new admin PW">
+				<br>
+				<input type="eamil" name="admin_mail" placeholder="Input new admin MAIL">
+				<br>
+				<input type="text" name="admin_phone" placeholder="Input new admin PHONE">
+				<br>
+				<input type="button" value="SIGN UP" onclick="signupForm();">
+				<input type="reset" value="RESET">
+			</form>
 		</div>
 	</section>
 	
