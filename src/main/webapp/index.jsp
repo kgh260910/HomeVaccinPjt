@@ -4,9 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="./view/include/title.jsp"/>
 </head>
 <body>
+
+	<jsp:include page="./view/include/header.jsp"/>
+	
+	<jsp:include page="./view/include/nav.jsp"/>
+	
+	<section>
+		<div>
+			<h1>HOME.</h1>
+		</div>
+	</section>
+	
+	<jsp:include page="./view/include/footer.jsp"/>
 
 </body>
 </html>
