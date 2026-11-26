@@ -18,16 +18,16 @@
 			
 			<form action="<%= request.getContextPath() %>/signup_confirm.mem" method="post" name="signup_form">
 				
-				<input type="text" name="admin_id" placeholder="Input new admin ID">
+				<input class="basic_input" type="text" name="admin_id" placeholder="Input new admin ID">
 				<br>
-				<input type="password" name="admin_pw" placeholder="Input new admin PW">
+				<input class="basic_input" type="password" name="admin_pw" placeholder="Input new admin PW">
 				<br>
-				<input type="eamil" name="admin_mail" placeholder="Input new admin MAIL">
+				<input class="basic_input" type="eamil" name="admin_mail" placeholder="Input new admin MAIL">
 				<br>
-				<input type="text" name="admin_phone" placeholder="Input new admin PHONE">
+				<input class="basic_input" type="text" name="admin_phone" placeholder="Input new admin PHONE">
 				<br>
-				<input type="button" value="SIGN UP" onclick="signupForm();">
-				<input type="reset" value="RESET">
+				<input class="basic_button" type="button" value="SIGN UP" onclick="signupForm();">
+				<input class="basic_button" type="reset" value="RESET">
 			</form>
 		</div>
 	</section>

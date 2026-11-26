@@ -31,6 +31,9 @@ public class MemberController extends HttpServlet {
 			nextPage = generateView("signup_form");
 			break;
 		
+		case "/signup_confirm.mem":
+			break;
+		
 		case "/signin_form.mem":
 			
 			break;
