@@ -35,6 +35,12 @@ public class MemberController extends HttpServlet {
 			
 			memberService = new MemberService(new MemberDao());
 			int resultForSignupConfirm = memberService.signupConfirm(request, response);
+			
+			if (resultForSignupConfirm > 0 ) {
+				nextPage = generateView("signup_ok");
+			} else {
+				nextPage = generateView("signup_ng");
+			}
 			break;
 		
 		case "/signin_form.mem":

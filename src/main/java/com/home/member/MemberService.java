@@ -13,7 +13,7 @@ public class MemberService {
 
 	public int signupConfirm(HttpServletRequest request, HttpServletResponse response) {
 		
-		// ID 중복체크
+		// 1. ID 중복체크
 		String admin_id = request.getParameter("admin_id");
 		String admin_pw = request.getParameter("admin_pw");
 		String admin_mail = request.getParameter("admin_mail");
@@ -21,7 +21,22 @@ public class MemberService {
 		
 		boolean isMember = memberDao.isMember(admin_id);
 		
-		return 0;
+		int result = 0;
+		
+		// 2. 회원가입
+		if (!isMember) {
+			result = memberDao.insertNewMember(
+					new MemberDto(admin_id, admin_pw, admin_mail, admin_phone));
+			
+			if (result > 0) {
+				System.out.println("[MemberService] SIGN UP SUCCESS!!");
+			} else {
+				System.out.println("[MemberService] SIGN UP FAIL!!");
+			}
+			
+		}
+		
+		return result;
 	}
 
 }
