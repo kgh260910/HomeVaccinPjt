@@ -28,7 +28,7 @@ public class MemberController extends HttpServlet {
 		switch (command) {
 		case "/signup_form.mem":
 			
-			nextPage = generateView("signup_form.mem");
+			nextPage = generateView("signup_form");
 			break;
 		
 		case "/signin_form.mem":
