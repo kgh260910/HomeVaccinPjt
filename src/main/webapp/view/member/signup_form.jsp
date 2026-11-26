@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <jsp:include page="../include/title.jsp"/>
+
+<jsp:include page="../include/js/member.jsp"/>
 </head>
 <body>
 
@@ -21,6 +24,8 @@
 				<input class="basic_input" type="text" name="admin_id" placeholder="Input new admin ID">
 				<br>
 				<input class="basic_input" type="password" name="admin_pw" placeholder="Input new admin PW">
+				<br>
+				<input class="basic_input" type="password" name="admin_pw_again" placeholder="Again Input new admin PW">
 				<br>
 				<input class="basic_input" type="eamil" name="admin_mail" placeholder="Input new admin MAIL">
 				<br>
