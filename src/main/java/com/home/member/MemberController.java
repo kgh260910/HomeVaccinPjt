@@ -28,10 +28,13 @@ public class MemberController extends HttpServlet {
 		switch (command) {
 		case "/signup_form.mem":
 			
-			nextPage = generateView("signup_form");
+			nextPage = generateView("signup_form");  // 회원가입창
 			break;
 		
-		case "/signup_confirm.mem":
+		case "/signup_confirm.mem":  // 회원가입 확인
+			
+			memberService = new MemberService(new MemberDao());
+			int resultForSignupConfirm = memberService.signupConfirm(request, response);
 			break;
 		
 		case "/signin_form.mem":
