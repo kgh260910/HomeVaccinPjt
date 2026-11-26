@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<jsp:include page="./view/include/title.jsp"/>
+<jsp:include page="../include/title.jsp"/>
 </head>
 <body>
 
-	<jsp:include page="./view/include/header.jsp"/>
+	<jsp:include page="../include/header.jsp"/>
 	
-	<jsp:include page="./view/include/nav.jsp"/>
+	<jsp:include page="../include/nav.jsp"/>
 	
 	<section>
 		<div>
@@ -18,7 +18,7 @@
 		</div>
 	</section>
 	
-	<jsp:include page="./view/include/footer.jsp"/>
+	<jsp:include page="../include/footer.jsp"/>
 
 </body>
 </html>
