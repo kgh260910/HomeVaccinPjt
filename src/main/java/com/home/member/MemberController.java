@@ -73,6 +73,10 @@ public class MemberController extends HttpServlet {
 			
 			
 		case "/signout_form.mem":
+			
+			request.getSession().invalidate();
+			nextPage = "/";
+			
 			break;
 					
 			
