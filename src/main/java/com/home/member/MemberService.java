@@ -39,4 +39,25 @@ public class MemberService {
 		return result;
 	}
 
+	public String signinConfirm(HttpServletRequest request, HttpServletResponse response) {
+		
+		String admin_id = request.getParameter("admin_id");
+		String admin_pw = request.getParameter("admin_pw");
+		
+		MemberDto selectedMemeberDto = memberDao.selectMemberByAdminId(admin_id);
+		
+		if (selectedMemeberDto != null && selectedMemeberDto.getAdmin_pw().equals(admin_pw)) {
+			System.out.println("[MemberService] SIGNIN SUCCESS!!");
+			
+			return admin_id;
+			
+		} else {
+			System.out.println("[MemberService] SIGNIN FAIL!!");
+			
+			return null;
+			
+		}
+
+	}
+
 }

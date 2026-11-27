@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
+import java.util.Vector;
 
 public class MemberDao {
 	
@@ -105,6 +107,72 @@ public class MemberDao {
 		}
 		
 		return result;
+	
+	}
+
+	public MemberDto selectMemberByAdminId(String id) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<MemberDto> memberDtos = new Vector<MemberDto>();
+		
+		try {
+			// 1. 드라이버 로드 in 메모리
+			Class.forName(DRIVER);
+			// 2. 다리 연결 : 커넥션
+			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			// 3. 작업지시서 작성 : SQL문
+			String sql = "select "
+					+ 	"* "
+					+ "from "
+					+ 	"tbl_admin "
+					+ "where "
+					+ 	"admin_id = ?";
+			// 4. 일꾼을 구합니다.
+			pstmt = conn.prepareStatement(sql);
+			// 5. 데이터 주입
+			pstmt.setString(1, id);
+			// 6. 작업 지시
+			rs = pstmt.executeQuery();
+			// 7. 데이터 추출
+			while (rs.next()) {
+				int admin_no = rs.getInt("admin_no");
+				String admin_id = rs.getString("admin_id");
+				String admin_pw = rs.getString("admin_pw");
+				String admin_mail = rs.getString("admin_mail");
+				String admin_phone = rs.getString("admin_phone");
+				String admin_reg_date = rs.getString("admin_reg_date");
+				String admin_mod_date = rs.getString("admin_mod_date");
+			
+				MemberDto dto = new MemberDto(admin_no, 
+						admin_id, 
+						admin_pw, 
+						admin_mail, 
+						admin_phone, 
+						admin_reg_date, 
+						admin_mod_date);
+				
+				memberDtos.add(dto);
+			
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			// 8. 외부 자원 해제
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return memberDtos.size() > 0 ? memberDtos.get(0) : null;
 	
 	}
 
